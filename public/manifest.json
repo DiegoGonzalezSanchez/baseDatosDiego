@@ -1,0 +1,15 @@
+{
+  "short_name": "Pasa",
+  "name": "DIEGO",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#4fc3f7",
+  "theme_color": "#ffcb2d",
+  "icons": [
+    {
+      "src": "icono.png",
+      "sizes": "2048x2048",
+      "type": "image/png"
+    }
+  ]
+}

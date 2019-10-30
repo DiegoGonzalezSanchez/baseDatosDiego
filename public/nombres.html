@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>NOMBRES</title>
+    <link rel="icon" sizes="32x32" href="favicon.ico">
+    <meta name="theme-color" content="#ffcb2d">
+    <link rel="manifest" href="manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="estilos.css">
+    <script type="module" src="lib/registraServiceWorker.js"></script>
+    <script src="lib/polycustom.js"></script>
+    <script type="module" src="mi-footer.js"></script>
+  </head>
+  <body>
+    <form id="vista">
+      <header>
+        <a href="index.html">Cancelar</a>
+        <button type="submit">Guardar</button>
+        <button id="eliminar" type="button">Eliminar</button>
+        <h1><output id="título"><progress max="100">Cargando…</progress></h1>
+        <h1><output id="título2"><progress max="100">Cargando…</progress></h1>
+      </header>
+      <p><input id="nombre" type="text" placeholder="Nombre" required></p>
+      <p><input id="aP" type="text" placeholder="Apellido" required></p>
+      <footer is="mi-footer"></footer>
+    </form>
+    <script src="/__/firebase/7.2.0/firebase-app.js"></script>
+    <script src="/__/firebase/7.2.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script type="module">
+      import { error } from "./lib/util.js";
+      const parametros = new URLSearchParams(location.search);
+      const id = parametros.get("id");
+      const firestore = firebase.firestore();
+      firestore.enablePersistence()
+        .catch(error)
+        .then(busca);
+      async function busca() {
+        try {
+          const doc = await firestore.collection("DIEGO").doc(id).get();
+          if (doc.exists) {
+            const modelo = doc.data();
+            document.title = modelo.PASA_NOMBRE,
+            título.value = modelo.PASA_NOMBRE;
+            nombre.value = modelo.PASA_NOMBRE;
+
+            document.title = modelo.PASA_APELLIDO,
+            título2.value = modelo.PASA_APELLIDO;
+            aP.value = modelo.PASA_APELLIDO;
+            vista.addEventListener("submit", guarda);
+            eliminar.addEventListener("click", elimina);
+          } else {
+            alert("Nombre no encontrado");
+          }
+        } catch (e) {
+          error(e)
+        }
+      }
+      async function guarda(evt) {
+        try {
+          evt.preventDefault();
+          const PASA_NOMBRE = nombre.value.trim();
+          const PASA_APELLIDO = aP.value.trim();
+          const modelo = { PASA_NOMBRE, PASA_APELLIDO};
+          await firestore.collection("DIEGO").doc(id).set(modelo);
+          document.location = "index.html";
+        } catch (e) {
+          error(e)
+        }
+      }
+      async function elimina() {
+        try {
+          await firestore.collection("DIEGO").doc(id).delete();
+          document.location = "index.html";
+        } catch (e) {
+          error(e)
+        }
+      }
+    </script>
+  </body>
+</html>

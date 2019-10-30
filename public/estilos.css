@@ -1,0 +1,14 @@
+body {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: linear-gradient(to right, rgb(91, 200, 240) 8%, rgb(132, 219, 245) 13%, rgb(122, 219, 252) 16%,
+      rgba(183,222,237,1) 100%);
+}
+ 
+body, a {
+  font-family: sans-serif;
+  background: linear-gradient(to right, rgb(91, 200, 240) 8%, rgb(132, 219, 245) 13%, rgb(122, 219, 252) 16%,
+      rgba(183,222,237,1) 100%);
+}
