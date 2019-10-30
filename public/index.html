@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Nombres</title>
+    <title>Dados</title>
  
     <!-- Ícono para la página web. -->
     <link rel="icon" sizes="32x32" href="favicon.ico">
@@ -34,7 +34,7 @@
   </head>
   <body>
     <header>
-      <a href="nombresNuevo.html">Agregar&hellip;</a>
+      <a href="dadosNuevo.html">Agregar&hellip;</a>
       <h1>DNOMBRES</h1>
     </header>
     <ul id="ul">
@@ -58,7 +58,7 @@
               const modelo = doc.data();
               ul.innerHTML += /*html*/
                 `<li>
-                  <a href="nombres.html?id=${url(doc.id)}">
+                  <a href="dados.html?id=${url(doc.id)}">
                     ${cod(modelo.DADOS)}
                     ${cod(modelo.DADOS2)}
                   </a>
