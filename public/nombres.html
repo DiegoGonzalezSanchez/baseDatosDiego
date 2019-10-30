@@ -41,13 +41,13 @@
           const doc = await firestore.collection("DIEGO").doc(id).get();
           if (doc.exists) {
             const modelo = doc.data();
-            document.title = modelo.PASA_NOMBRE,
-            título.value = modelo.PASA_NOMBRE;
-            nombre.value = modelo.PASA_NOMBRE;
+            document.title = modelo.DADOS,
+            título.value = modelo.DADOS;
+            nombre.value = modelo.DADOS;
 
-            document.title = modelo.PASA_APELLIDO,
-            título2.value = modelo.PASA_APELLIDO;
-            aP.value = modelo.PASA_APELLIDO;
+            document.title = modelo.DADOS2,
+            título2.value = modelo.DADOS2;
+            aP.value = modelo.DADOS2;
             vista.addEventListener("submit", guarda);
             eliminar.addEventListener("click", elimina);
           } else {
@@ -60,9 +60,9 @@
       async function guarda(evt) {
         try {
           evt.preventDefault();
-          const PASA_NOMBRE = nombre.value.trim();
-          const PASA_APELLIDO = aP.value.trim();
-          const modelo = { PASA_NOMBRE, PASA_APELLIDO};
+          const DADOS = nombre.value.trim();
+          const DADOS2 = aP.value.trim();
+          const modelo = { DADOS, DADOS2};
           await firestore.collection("DIEGO").doc(id).set(modelo);
           document.location = "index.html";
         } catch (e) {

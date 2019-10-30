@@ -35,9 +35,9 @@
       async function guarda(evt) {
         try {
           evt.preventDefault();
-          const PASA_NOMBRE = nombre.value.trim();
-          const  PASA_APELLIDO = aP.value.trim();
-          const modelo = { PASA_NOMBRE, PASA_APELLIDO };
+          const DADOS = nombre.value.trim();
+          const  DADOS2 = aP.value.trim();
+          const modelo = { DADOS, DADOS2 };
           await firestore.collection("DIEGO").add(modelo);
           document.location = "index.html";
         } catch (e) {
