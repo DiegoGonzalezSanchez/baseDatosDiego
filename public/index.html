@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Dados</title>
+    <title>DINOSAURIOS</title>
  
     <!-- Ícono para la página web. -->
     <link rel="icon" sizes="32x32" href="favicon.ico">
@@ -34,8 +34,8 @@
   </head>
   <body>
     <header>
-      <a href="dadosNuevo.html">Agregar&hellip;</a>
-      <h1>DADOS</h1>
+      <a href="dinosauriosNuevo.html">Agregar&hellip;</a>
+      <h1>DINOSAURIOS</h1>
     </header>
     <ul id="ul">
       <li><progress max="100">Cargando…</progress></li>
@@ -51,16 +51,16 @@
         .catch(error)
         .then(consulta);
       function consulta() {
-        firebase.firestore().collection("DIEGO").onSnapshot(
+        firebase.firestore().collection("DINOSAURIOS").onSnapshot(
           querySnapshot => {
             ul.innerHTML = "";
             querySnapshot.forEach(doc => {
               const modelo = doc.data();
               ul.innerHTML += /*html*/
                 `<li>
-                  <a href="dados.html?id=${url(doc.id)}">
-                    ${cod(modelo.DADOS)}
-                    ${cod(modelo.DADOS2)}
+                  <a href="dinosaurios.html?id=${url(doc.id)}">
+                    ${cod(modelo.DINOSAURIOS)}.murio por: 
+                    ${cod(modelo.DINOSAURIOS2)}
                   </a>
                 </li>`;
             });

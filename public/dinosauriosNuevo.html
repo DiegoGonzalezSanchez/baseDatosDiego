@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>NOMBRE O APELLIDO Nuevo</title>
+    <title>NUEVO</title>
     <link rel="icon" sizes="32x32" href="favicon.ico">
     <meta name="theme-color" content="#ffcb2d">
     <link rel="manifest" href="manifest.json">
@@ -17,10 +17,10 @@
       <header>
         <a href="index.html">Cancelar</a>
         <button type="submit">Guardar</button>
-        <h1>DADO O DADO2</h1>
+        <h1>DINOSAURIOS CARACTERISTICAS</h1>
       </header>
-      <p><input id="nombre" type="text" placeholder="Dado1" required></p>
-      <p><input id="aP" type="text" placeholder="Dado2" required></p>
+      <p><input id="nombre" type="text" placeholder="Nombre" required></p>
+      <p><input id="aP" type="text" placeholder="Causa de extinsión" required></p>
       <footer is="mi-footer"></footer>
     </form>
     <script src="/__/firebase/7.2.0/firebase-app.js"></script>
@@ -35,11 +35,13 @@
       async function guarda(evt) {
         try {
           evt.preventDefault();
-          const DADOS = nombre.value.trim();
-          const  DADOS2 = aP.value.trim();
-          const modelo = { DADOS, DADOS2 };
-          await firestore.collection("DIEGO").add(modelo);
+          const DINOSAURIOS = nombre.value.trim();
+          const  DINOSAURIOS2 = aP.value.trim();
+          const modelo = { DINOSAURIOS, DINOSAURIOS2 };
+          await firestore.collection("DINOSAURIOS").add(modelo);
           document.location = "index.html";
+          
+          
         } catch (e) {
           error(e)
         }

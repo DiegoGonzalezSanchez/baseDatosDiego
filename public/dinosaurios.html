@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>DADOS</title>
+    <title>DINOSAURIOS</title>
     <link rel="icon" sizes="32x32" href="favicon.ico">
     <meta name="theme-color" content="#ffcb2d">
     <link rel="manifest" href="manifest.json">
@@ -21,8 +21,8 @@
         <h1><output id="título"><progress max="100">Cargando…</progress></h1>
         <h1><output id="título2"><progress max="100">Cargando…</progress></h1>
       </header>
-      <p><input id="nombre" type="text" placeholder="Dado1" required></p>
-      <p><input id="aP" type="text" placeholder="Dado2" required></p>
+      <p><input id="nombre" type="text" placeholder="Nombre" required></p>
+      <p><input id="aP" type="text" placeholder="Causa de extinsión" required></p>
       <footer is="mi-footer"></footer>
     </form>
     <script src="/__/firebase/7.2.0/firebase-app.js"></script>
@@ -38,16 +38,16 @@
         .then(busca);
       async function busca() {
         try {
-          const doc = await firestore.collection("DIEGO").doc(id).get();
+          const doc = await firestore.collection("DINOSAURIOS").doc(id).get();
           if (doc.exists) {
             const modelo = doc.data();
-            document.title = modelo.DADOS,
-            título.value = modelo.DADOS;
-            nombre.value = modelo.DADOS;
+            document.title = modelo.DINOSAURIOS,
+            título.value = modelo.DINOSAURIOS;
+            nombre.value = modelo.DINOSAURIOS;
 
-            document.title = modelo.DADOS2,
-            título2.value = modelo.DADOS2;
-            aP.value = modelo.DADOS2;
+            document.title = modelo.DINOSAURIOS2,
+            título2.value = modelo.DINOSAURIOS2;
+            aP.value = modelo.DINOSAURIOS2;
             vista.addEventListener("submit", guarda);
             eliminar.addEventListener("click", elimina);
           } else {
@@ -60,18 +60,19 @@
       async function guarda(evt) {
         try {
           evt.preventDefault();
-          const DADOS = nombre.value.trim();
-          const DADOS2 = aP.value.trim();
-          const modelo = { DADOS, DADOS2};
-          await firestore.collection("DIEGO").doc(id).set(modelo);
+          const DINOSAURIOS = nombre.value.trim();
+          const DINOSAURIOS2 = aP.value.trim();
+          const modelo = { DINOSAURIOS, DINOSAURIOS2};
+          await firestore.collection("DINOSAURIOS").doc(id).set(modelo);
           document.location = "index.html";
+          
         } catch (e) {
           error(e)
         }
       }
       async function elimina() {
         try {
-          await firestore.collection("DIEGO").doc(id).delete();
+          await firestore.collection("DINOSAURIOS").doc(id).delete();
           document.location = "index.html";
         } catch (e) {
           error(e)
